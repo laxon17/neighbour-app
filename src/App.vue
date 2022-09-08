@@ -1,56 +1,51 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    
+    <NavigationBar />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
+    <v-main id="backgroundHolder">
+      <v-container>
+        <router-view class="my-16"/>
+      </v-container>
     </v-main>
+
+    <Footer />
+
   </v-app>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+  import Vue from 'vue'
+  import NavigationBar from '@/components/partials/NavigationBar'
+  import Footer from '@/components/partials/Footer'
 
-export default Vue.extend({
-  name: 'App',
+  export default Vue.extend({
+    name: 'App',
 
-  data: () => ({
-    //
-  }),
-});
+    components: {
+      NavigationBar,
+      Footer
+    },
+
+    data () {
+      return {}
+    },
+
+    
+  })
 </script>
+
+<style lang="sass">
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap')
+  button, a
+    font-family: 'Pacifico', cursive
+  #backgroundHolder
+    background-image: url('assets/orchid.jpg')
+    background-repeat: no-repeat
+    background-attachment: fixed
+    background-position: 8% 10%
+    background-size: 900px 900px
+  .transparent__background
+    box-shadow: 0 0 10px 1px lightgrey
+    background-color: rgba(255, 255, 255, .85)
+</style>
